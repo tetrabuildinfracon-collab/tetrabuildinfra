@@ -93,28 +93,21 @@
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.7rem;
     }
 
     .nav-logo {
-      height: 60px; /* bigger logo */
+      height: 72px; /* bigger logo */
       width: auto;
     }
 
     .brand-text {
       font-family: "Urbanist", system-ui, sans-serif;
       font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      color: #222;
-    }
-
-    .brand-tagline {
-      font-size: 0.7rem;
-      text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      color: #222;
     }
 
     .nav-right {
@@ -175,12 +168,8 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      filter: brightness(0.78); /* lighter so photos show more */
-      transition: opacity 1s ease, background-image 0.8s ease;
-    }
-
-    .hero-bg.fade-out {
-      opacity: 0;
+      filter: brightness(0.85); /* lighter so photos show */
+      transition: background-image 0.8s ease;
     }
 
     .hero-overlay {
@@ -188,8 +177,7 @@
       inset: 0;
       background:
         radial-gradient(circle at top left, rgba(0, 163, 154, 0.3), transparent 55%),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.6));
-      /* softer overlay so background is clearer */
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
     }
 
     .hero-inner {
@@ -221,12 +209,12 @@
 
     #heroTitleText {
       display: inline-block;
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transition: opacity 0.45s ease, transform 0.45s ease;
     }
 
     #heroTitleText.hidden {
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(10px);
     }
 
     .hero-accent {
@@ -576,30 +564,75 @@
     /* Footer */
 
     footer {
-      border-top: 1px solid var(--border);
-      background: #ffffff;
-      padding: 0.9rem 0;
+      margin-top: 0.5rem;
       font-size: 0.8rem;
-      color: var(--muted);
     }
 
-    .footer-inner {
+    .footer-bar {
+      background: var(--primary-dark);
+      color: #ffffff;
+      padding: 1.4rem 0;
+    }
+
+    .footer-bar-inner {
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 0 1.25rem;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 0.4rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
-    .footer-brand {
+    .footer-logo-block {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .footer-logo {
+      height: 50px;
+      width: auto;
+    }
+
+    .footer-company {
       font-family: "Urbanist", system-ui, sans-serif;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      font-size: 0.72rem;
+      font-size: 0.82rem;
+    }
+
+    .footer-contact-lines {
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .footer-contact-lines a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #0e5651;
+      background: #043734;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 0.6rem 0;
+    }
+
+    .footer-bottom-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom-right {
+      opacity: 0.9;
     }
 
     /* Reveal on scroll */
@@ -644,6 +677,10 @@
         justify-content: flex-start;
         flex-wrap: wrap;
       }
+
+      .footer-bar-inner {
+        align-items: flex-start;
+      }
     }
 
     @media (max-width: 640px) {
@@ -667,6 +704,10 @@
       .nav-links {
         gap: 0.7rem;
       }
+
+      .footer-company {
+        font-size: 0.78rem;
+      }
     }
   </style>
 </head>
@@ -678,10 +719,7 @@
     <div class="nav">
       <div class="nav-left">
         <img src="images/logo.png" alt="Tetrabuild Infracon LLC Logo" class="nav-logo">
-        <div>
-          <div class="brand-text">Tetrabuild Infracon LLC</div>
-          <div class="brand-tagline">Building Better Tomorrow</div>
-        </div>
+        <div class="brand-text">Tetrabuild Infracon LLC</div>
       </div>
       <div class="nav-right">
         <nav class="nav-links">
@@ -706,7 +744,7 @@
       <div class="hero-main reveal">
         <div class="hero-kicker">Roadway • Utilities • Civil Infrastructure</div>
         <h1 class="hero-title">
-          <span id="heroTitleText">Tetrabuild Infracon LLC</span>
+          <span id="heroTitleText"></span>
         </h1>
         <p class="hero-sub">
           Georgia’s new-generation roadway &amp; infrastructure contractor—delivering safe, high-quality, on-time construction across GDOT, municipal, and private projects.
@@ -990,29 +1028,51 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">Tetrabuild Infracon LLC</div>
-      <div>© <span id="year"></span> Tetrabuild Infracon LLC · Building Better Tomorrow</div>
+    <div class="footer-bar">
+      <div class="footer-bar-inner">
+        <div class="footer-logo-block">
+          <img src="images/logo.png" alt="Tetrabuild Infracon Logo" class="footer-logo">
+          <div class="footer-company">Tetrabuild Infracon LLC</div>
+        </div>
+        <div class="footer-contact-lines">
+          <div>Phone: <a href="tel:+14703044777">470-304-4777</a></div>
+          <div>Email: <a href="mailto:office@tetrabuildinfra.com">office@tetrabuildinfra.com</a></div>
+          <div>Based in Dacula, GA · Serving Metro Atlanta &amp; North Georgia</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <div>© <span id="year"></span> Tetrabuild Infracon LLC. All rights reserved.</div>
+        <div class="footer-bottom-right">Building Better Tomorrow</div>
+      </div>
     </div>
   </footer>
 
 </div>
 
 <script>
-  // Hero title animation: show company name first, then Building Better Tomorrow
+  // HERO TITLE: loop between company name and tagline every ~2 seconds
   const heroTitleEl = document.getElementById("heroTitleText");
   if (heroTitleEl) {
-    heroTitleEl.textContent = "Tetrabuild Infracon LLC";
-    setTimeout(() => {
+    const heroTitles = [
+      "Tetrabuild Infracon LLC",
+      'Building Better <span class="hero-accent">Tomorrow</span>'
+    ];
+    let heroTitleIndex = 0;
+    heroTitleEl.innerHTML = heroTitles[heroTitleIndex];
+
+    setInterval(() => {
       heroTitleEl.classList.add("hidden");
       setTimeout(() => {
-        heroTitleEl.innerHTML = 'Building Better <span class="hero-accent">Tomorrow</span>';
+        heroTitleIndex = (heroTitleIndex + 1) % heroTitles.length;
+        heroTitleEl.innerHTML = heroTitles[heroTitleIndex];
         heroTitleEl.classList.remove("hidden");
-      }, 650);
-    }, 2200);
+      }, 450);
+    }, 2000); // change every 2s
   }
 
-  // Hero background slideshow using local images
+  // HERO BACKGROUND SLIDESHOW: smooth & equal duration
   const heroBg = document.getElementById("heroBg");
   const heroImages = [
     "images/hero1.jpg",
@@ -1020,25 +1080,17 @@
     "images/hero3.jpg",
     "images/hero4.jpg"
   ];
-
   let heroIndex = 0;
 
   function setHeroBackground(index) {
     heroBg.style.backgroundImage = "url('" + heroImages[index] + "')";
   }
 
-  function cycleHeroBackground() {
-    heroBg.classList.add("fade-out");
-    setTimeout(() => {
-      heroIndex = (heroIndex + 1) % heroImages.length;
-      setHeroBackground(heroIndex);
-      heroBg.classList.remove("fade-out");
-    }, 800);
-  }
-
-  // Initialize
   setHeroBackground(heroIndex);
-  setInterval(cycleHeroBackground, 5000); // every 5 seconds
+  setInterval(() => {
+    heroIndex = (heroIndex + 1) % heroImages.length;
+    setHeroBackground(heroIndex);
+  }, 6000); // every 6 seconds, consistent timing
 
   // Reveal on scroll
   const revealEls = document.querySelectorAll(".reveal");
@@ -1053,7 +1105,6 @@
     },
     { threshold: 0.16 }
   );
-
   revealEls.forEach(el => observer.observe(el));
 
   // Year in footer
