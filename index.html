@@ -191,6 +191,19 @@
       gap: 2.3rem;
       align-items: center;
     }
+  .hero-main {
+    max-width: 36rem;
+    margin: 0;   /* centered in its grid column */
+}
+.hero-main {
+    padding-left: 1rem;  /* keeps spacing natural, like your older version */
+}
+
+@media (max-width: 900px) {
+  .hero-main {
+    margin-left: 0;        /* on tablets/phones, keep it aligned normally */
+  }
+}
 
     .hero-kicker 
 {
@@ -1112,6 +1125,7 @@
 </script>
 </body>
 </html>
+
 
 
 
