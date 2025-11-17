@@ -192,7 +192,14 @@
       align-items: center;
     }
 
-    .hero-kicker {
+    .hero-kicker 
+    /* Hero Logo Style */
+.hero-logo {
+  height: 80px;      /* Adjust size here if you want */
+  width: auto;
+  margin-bottom: 0.6rem;
+}
+{
       font-size: 0.78rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -740,12 +747,12 @@
     <div class="hero-bg" id="heroBg"></div>
     <div class="hero-overlay"></div>
 
-    <div class="hero-inner">
-      <div class="hero-main reveal">
-        <div class="hero-kicker">Roadway • Utilities • Civil Infrastructure</div>
-        <h1 class="hero-title">
-          <span id="heroTitleText"></span>
-        </h1>
+    <div class="hero-main reveal">
+  <div class="hero-kicker">Roadway • Utilities • Civil Infrastructure</div>
+  <img src="images/logo.png" alt="Tetrabuild Infracon Logo" class="hero-logo">
+  <h1 class="hero-title">
+    <span id="heroTitleText"></span>
+  </h1>
         <p class="hero-sub">
           Georgia’s new-generation roadway &amp; infrastructure contractor—delivering safe, high-quality, on-time construction across GDOT, municipal, and private projects.
         </p>
@@ -1069,7 +1076,7 @@
         heroTitleEl.innerHTML = heroTitles[heroTitleIndex];
         heroTitleEl.classList.remove("hidden");
       }, 450);
-    }, 2000); // change every 2s
+    }, 4000); // change every 2s
   }
 
   // HERO BACKGROUND SLIDESHOW: smooth & equal duration
@@ -1112,4 +1119,5 @@
 </script>
 </body>
 </html>
+
 
