@@ -665,37 +665,46 @@
     /* Responsive */
 
     @media (max-width: 900px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-        padding-top: 4.4rem;
-      }
+  /* Stack hero text and snapshot vertically on tablets & phones */
+  .hero-inner {
+    display: block;          /* stops the two-column grid */
+    padding-top: 4.4rem;
+  }
 
-      .hero-side {
-        margin-top: 0.4rem;
-      }
+  .hero-main {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 0.5rem 1.4rem 0.5rem;  /* comfortable side padding */
+  }
 
-      .about-grid,
-      .services-layout,
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+  .hero-side {
+    margin-top: 1.4rem;      /* put snapshot BELOW the text */
+    max-width: 100%;
+  }
 
-      .nav {
-        flex-wrap: wrap;
-        padding-inline: 1rem;
-        row-gap: 0.2rem;
-      }
+  .about-grid,
+  .services-layout,
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-      .nav-right {
-        width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-      }
+  .nav {
+    flex-wrap: wrap;
+    padding-inline: 1rem;
+    row-gap: 0.2rem;
+  }
 
-      .footer-bar-inner {
-        align-items: flex-start;
-      }
-    }
+  .nav-right {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .footer-bar-inner {
+    align-items: flex-start;
+  }
+}
+
 
     @media (max-width: 640px) {
       .hero {
@@ -1125,6 +1134,7 @@
 </script>
 </body>
 </html>
+
 
 
 
