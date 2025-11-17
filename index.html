@@ -97,7 +97,7 @@
     }
 
     .nav-logo {
-      height: 90px; /* bigger logo */
+      height: 90px;
       width: auto;
     }
 
@@ -168,7 +168,7 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      filter: brightness(0.85); /* lighter so photos show */
+      filter: brightness(0.85);
       transition: background-image 0.8s ease;
     }
 
@@ -191,22 +191,14 @@
       gap: 2.3rem;
       align-items: center;
     }
-  .hero-main {
-    max-width: 36rem;
-    margin: 0;   /* centered in its grid column */
-}
-.hero-main {
-    padding-left: 1rem;  /* keeps spacing natural, like your older version */
-}
 
-@media (max-width: 900px) {
-  .hero-main {
-    margin-left: 0;        /* on tablets/phones, keep it aligned normally */
-  }
-}
+    .hero-main {
+      max-width: 36rem;
+      margin: 0;
+      padding-left: 1rem;
+    }
 
-    .hero-kicker 
-{
+    .hero-kicker {
       font-size: 0.78rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -665,46 +657,48 @@
     /* Responsive */
 
     @media (max-width: 900px) {
-  /* Stack hero text and snapshot vertically on tablets & phones */
-  .hero-inner {
-    display: block;          /* stops the two-column grid */
-    padding-top: 4.4rem;
-  }
+      /* Stack hero text and snapshot vertically */
+      .hero {
+        align-items: flex-start;
+      }
 
-  .hero-main {
-    max-width: 100%;
-    margin: 0;
-    padding: 0 0.5rem 1.4rem 0.5rem;  /* comfortable side padding */
-  }
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 4.4rem;
+      }
 
-  .hero-side {
-    margin-top: 1.4rem;      /* put snapshot BELOW the text */
-    max-width: 100%;
-  }
+      .hero-main {
+        max-width: 100%;
+        padding: 0 0.5rem 1.4rem 0.5rem;
+      }
 
-  .about-grid,
-  .services-layout,
-  .contact-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
+      .hero-side {
+        margin-top: 1.4rem;
+        max-width: 100%;
+      }
 
-  .nav {
-    flex-wrap: wrap;
-    padding-inline: 1rem;
-    row-gap: 0.2rem;
-  }
+      .about-grid,
+      .services-layout,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
 
-  .nav-right {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
+      .nav {
+        flex-wrap: wrap;
+        padding-inline: 1rem;
+        row-gap: 0.2rem;
+      }
 
-  .footer-bar-inner {
-    align-items: flex-start;
-  }
-}
+      .nav-right {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
 
+      .footer-bar-inner {
+        align-items: flex-start;
+      }
+    }
 
     @media (max-width: 640px) {
       .hero {
@@ -763,11 +757,12 @@
     <div class="hero-bg" id="heroBg"></div>
     <div class="hero-overlay"></div>
 
-    <div class="hero-main reveal">
-  <div class="hero-kicker">Roadway • Utilities • Civil Infrastructure</div>
-  <h1 class="hero-title">
-    <span id="heroTitleText"></span>
-  </h1>
+    <div class="hero-inner">
+      <div class="hero-main reveal">
+        <div class="hero-kicker">Roadway • Utilities • Civil Infrastructure</div>
+        <h1 class="hero-title">
+          <span id="heroTitleText"></span>
+        </h1>
         <p class="hero-sub">
           Georgia’s new-generation roadway &amp; infrastructure contractor—delivering safe, high-quality, on-time construction across GDOT, municipal, and private projects.
         </p>
@@ -1074,7 +1069,7 @@
 </div>
 
 <script>
-  // HERO TITLE: loop between company name and tagline every ~2 seconds
+  // HERO TITLE: loop between company name and tagline every ~4 seconds
   const heroTitleEl = document.getElementById("heroTitleText");
   if (heroTitleEl) {
     const heroTitles = [
@@ -1091,7 +1086,7 @@
         heroTitleEl.innerHTML = heroTitles[heroTitleIndex];
         heroTitleEl.classList.remove("hidden");
       }, 450);
-    }, 4000); // change every 2s
+    }, 4000); // change every 4s
   }
 
   // HERO BACKGROUND SLIDESHOW: smooth & equal duration
@@ -1112,7 +1107,7 @@
   setInterval(() => {
     heroIndex = (heroIndex + 1) % heroImages.length;
     setHeroBackground(heroIndex);
-  }, 6000); // every 6 seconds, consistent timing
+  }, 6000); // every 6 seconds
 
   // Reveal on scroll
   const revealEls = document.querySelectorAll(".reveal");
@@ -1134,9 +1129,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
